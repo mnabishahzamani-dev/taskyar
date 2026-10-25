@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:;">
+    <title>تسک‌یار - مدیریت هوشمند کارها</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Right Sidebar -->
+    <aside class="sidebar">
+        <div class="profile-area">
+            <div class="avatar">ت</div>
+            <div class="app-title">
+                <h1>تسک‌یار ویندوز</h1>
+                <p>مدیریت هوشمند کارها و زمان</p>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="جستجوی کارها..." oninput="renderApp()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+
+        <ul class="nav-list">
+            <li class="nav-item active" data-view="myday" onclick="switchView('myday', this)">
+                <div class="nav-item-right">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <span>روز من</span>
+                </div>
+                <span class="badge" id="badge-myday">0</span>
+            </li>
+
+            <li class="nav-item" data-view="weekboard" onclick="switchView('weekboard', this)">
+                <div class="nav-item-right">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path></svg>
+                    <span>برد ۷ روز هفته</span>
+                </div>
+                <span class="badge" id="badge-weekboard">0</span>
+            </li>
+
+            <li class="nav-item" data-view="monthboard" onclick="switchView('monthboard', this)">
+                <div class="nav-item-right">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span>برد ۳۰ روزه ماه</span>
+                </div>
+                <span class="badge" id="badge-monthboard">0</span>
+            </li>
+
+            <li class="nav-item" data-view="important" onclick="switchView('important', this)">
+                <div class="nav-item-right">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    <span>مهم و ستاره‌دار</span>
+                </div>
+                <span class="badge" id="badge-important">0</span>
+            </li>
+
+            <div class="nav-section-title">افق زمانی برنامه‌ها</div>
+
+            <li class="nav-item" data-view="daily" onclick="switchView('daily', this)">
+                <div class="nav-item-right">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span>کارهای روزانه</span>
+                </div>
+                <span class="badge" id="badge-daily">0</span>
+            </li>
+            <li class="nav-item" data-view="weekly" onclick="switchView('weekly', this)">
+                <div class="nav-item-right">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>برنامه‌های هفتگی</span>
+                </div>
+                <span class="badge" id="badge-weekly">0</span>
+            </li>
+            <li class="nav-item" data-view="monthly" onclick="switchView('monthly', this)">
+                <div class="nav-item-right">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    <span>اهداف ماهیانه</span>
+                </div>
+                <span class="badge" id="badge-monthly">0</span>
+            </li>
+            <li class="nav-item" data-view="all" onclick="switchView('all', this)">
+                <div class="nav-item-right">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                    <span>همه وظایف</span>
+                </div>
+                <span class="badge" id="badge-all">0</span>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <button class="btn-icon-text" onclick="exportData()" title="دانلود فایل پشتیبان">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                ذخیره فایل
+            </button>
+            <button class="btn-icon-text" onclick="openEmailModal()" title="ارسال پشتیبان به ایمیل">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                بکاپ ایمیل
+            </button>
+            <label class="btn-icon-text" title="بازگردانی اطلاعات از فایل">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                بازیابی
+                <input type="file" hidden accept=".json" onchange="importData(event)">
+            </label>
+        </div>
+    </aside>
+
+    <!-- Center Main View -->
+    <main class="main-content">
+        <header class="main-header">
+            <div class="header-title">
+                <h2 id="viewTitle">روز من</h2>
+                <div class="header-date" id="persianDate"></div>
+            </div>
+            <div class="header-controls">
+                <div class="header-quick-menu" title="منوی دسترسی سریع">
+                    <button class="btn-header-action" onclick="openBackupSettingsModal()" title="تنظیمات پشتیبان‌گیری خودکار (Ctrl+B)">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span>پشتیبان‌گیری</span>
+                    </button>
+                    <button class="btn-header-action" onclick="openShortcutsModal()" title="راهنمای کلیدهای میانبر (F1)">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                        <span>میانبرها</span>
+                    </button>
+                    <button class="btn-header-action" onclick="openAboutModal()" title="درباره تسک‌یار">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>درباره</span>
+                    </button>
+                </div>
+                <div class="theme-switcher" title="تغییر تم رنگی">
+                    <div class="theme-dot active" style="background: linear-gradient(135deg, #6D28D9, #FCE7F3);" onclick="setTheme('default', this)" title="تم بنفش"></div>
+                    <div class="theme-dot" style="background: linear-gradient(135deg, #0284C7, #DCFCE7);" onclick="setTheme('ocean', this)" title="تم اقیانوس"></div>
+                    <div class="theme-dot" style="background: linear-gradient(135deg, #E11D48, #FEF3C7);" onclick="setTheme('sunset', this)" title="تم غروب"></div>
+                    <div class="theme-dot" style="background: linear-gradient(135deg, #059669, #E0F2FE);" onclick="setTheme('emerald', this)" title="تم زمرد"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="progress-wrapper" id="progressWrapper">
+            <div class="progress-info">
+                <span>میزان پیشرفت لیست فعلی</span>
+                <span id="progressText">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+
+        <!-- Standard List Container -->
+        <div class="tasks-scroll" id="tasksContainer"></div>
+
+        <!-- 7-Day Horizontal Board Container -->
+        <div class="week-board-container" id="weekBoardContainer"></div>
+
+        <!-- 30-Day Month Board Container (Persian month calendar) -->
+        <div class="month-board-container" id="monthBoardContainer"></div>
+
+        <!-- Add Task Bar -->
+        <div class="add-task-wrapper">
+            <div class="add-task-bar">
+                <svg width="20" height="20" fill="none" stroke="var(--primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                <input type="text" id="newTaskInput" placeholder="یک کار جدید اضافه کنید و Enter بزنید..." onkeypress="if(event.key === 'Enter') addTask()">
+                
+                <input type="text" id="newTaskDate" class="input-pill date-picker-input" readonly placeholder="تاریخ" title="تاریخ انجام کار (تقویم شمسی)">
+                <input type="time" id="newTaskTime" class="input-pill" title="ساعت انجام و آلارم">
+                
+                <button type="button" id="newTaskAlarmBtn" class="alarm-toggle-btn" onclick="toggleNewTaskAlarm()" title="فعال‌سازی آلارم سر ساعت">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    <span>آلارم</span>
+                </button>
+
+                <select id="newTaskPeriod" class="input-pill">
+                    <option value="daily">روزانه</option>
+                    <option value="weekly">هفتگی</option>
+                    <option value="monthly">ماهیانه</option>
+                </select>
+                <button class="btn-add" onclick="addTask()">افزودن</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Left Detail Drawer -->
+    <aside class="detail-drawer" id="detailDrawer">
+        <div class="drawer-header">
+            <span style="font-size: 13px; font-weight: 700; color: var(--text-muted);">جزئیات و تنظیمات کار</span>
+            <button class="btn-icon-text" style="padding: 4px 8px;" onclick="closeDrawer()">✕</button>
+        </div>
+
+        <input type="text" id="drawerTitle" class="drawer-title-input" onchange="updateSelectedTaskTitle(this.value)">
+
+        <!-- Date, Time & Alarm in Drawer -->
+        <div class="drawer-box">
+            <span style="font-size: 11.5px; font-weight: 700; color: var(--text-muted);">زمان‌بندی و یادآور (آلارم)</span>
+            <div class="drawer-row">
+                <span>تاریخ انجام:</span>
+                <input type="text" id="drawerDate" class="input-pill date-picker-input" readonly placeholder="تاریخ" title="تاریخ انجام کار (تقویم شمسی)" onchange="updateSelectedTaskSchedule()">
+            </div>
+            <div class="drawer-row">
+                <span>ساعت:</span>
+                <input type="time" id="drawerTime" class="input-pill" onchange="updateSelectedTaskSchedule()">
+            </div>
+            <div class="drawer-row">
+                <span>زنگ هشدار سر ساعت:</span>
+                <button type="button" id="drawerAlarmBtn" class="alarm-toggle-btn" onclick="toggleDrawerAlarm()">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    <span id="drawerAlarmText">غیرفعال</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="drawer-box">
+            <span style="font-size: 11.5px; font-weight: 700; color: var(--text-muted);">مراحل انجام (Subtasks)</span>
+            <div id="subtasksList" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            <div class="subtask-add">
+                <input type="text" id="newSubtaskInput" placeholder="افزودن مرحله فرعی..." onkeypress="if(event.key==='Enter') addSubtask()">
+                <button class="btn-add" style="padding: 4px 10px;" onclick="addSubtask()">+</button>
+            </div>
+        </div>
+
+        <div class="drawer-box">
+            <span style="font-size: 11.5px; font-weight: 700; color: var(--text-muted);">افق زمانی</span>
+            <select id="drawerPeriod" class="input-pill" style="width: 100%;" onchange="updateSelectedTaskPeriod(this.value)">
+                <option value="daily">کار روزانه</option>
+                <option value="weekly">برنامه هفتگی</option>
+                <option value="monthly">هدف ماهیانه</option>
+            </select>
+        </div>
+
+        <div class="drawer-box" style="flex: 1;">
+            <span style="font-size: 11.5px; font-weight: 700; color: var(--text-muted);">یادداشت و توضیحات</span>
+            <textarea id="drawerNotes" class="drawer-notes" placeholder="توضیحات تکمیلی را اینجا بنویسید..." oninput="updateSelectedTaskNotes(this.value)"></textarea>
+        </div>
+
+        <div class="drawer-footer">
+            <span id="drawerCreatedDate"></span>
+            <button class="btn-delete" onclick="deleteSelectedTask()">حذف کار</button>
+        </div>
+    </aside>
+
+    <!-- Alarm Ringing Modal -->
+    <div class="modal-overlay" id="alarmModal">
+        <div class="modal-card">
+            <div class="alarm-ring-icon">
+                <svg width="34" height="34" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800;">یادآور زمان انجام کار!</h3>
+            <p id="alarmTaskTitle" style="font-size: 15px; font-weight: 700; color: var(--primary); background: var(--primary-light); padding: 10px; border-radius: 10px;"></p>
+            <p id="alarmTaskTime" style="font-size: 12.5px; color: var(--text-muted);"></p>
+            <div class="modal-actions">
+                <button style="background: var(--primary); color: white;" onclick="dismissAlarm()">متوجه شدم</button>
+                <button style="background: #F1F5F9; color: var(--text-main);" onclick="snoozeAlarm()">یادآوری ۵ دقیقه دیگر</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Backup Modal -->
+    <div class="modal-overlay" id="emailModal">
+        <div class="modal-card" style="text-align: right;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 style="font-size: 16px; font-weight: 800;">ارسال پشتیبان به ایمیل</h3>
+                <button class="btn-icon-text" style="padding: 4px 8px;" onclick="closeEmailModal()">✕</button>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.6;">
+                آدرس ایمیل خود را وارد کنید. برنامه لیست کامل کارها و کد پشتیبان را در کلیپ‌بورد کپی کرده، فایل بکاپ را ذخیره می‌کند و پنجره ارسال ایمیل را برایتان باز می‌کند:
+            </p>
+            <input type="email" id="backupEmailInput" class="drawer-title-input" placeholder="example@gmail.com" dir="ltr" style="text-align:left;">
+            <div class="modal-actions">
+                <button style="background: var(--primary); color: white;" onclick="sendEmailBackup()">آماده‌سازی و ارسال به ایمیل</button>
+                <button style="background: #F1F5F9; color: var(--text-main);" onclick="closeEmailModal()">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backup Settings Modal -->
+    <div class="modal-overlay" id="backupSettingsModal">
+        <div class="modal-card modal-card-lg">
+            <div class="modal-card-header">
+                <h3>
+                    <svg width="20" height="20" fill="none" stroke="var(--primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
+                    تنظیمات پشتیبان‌گیری خودکار
+                </h3>
+                <button class="btn-icon-text" style="padding: 4px 8px;" onclick="closeBackupSettingsModal()">✕</button>
+            </div>
+
+            <div class="setting-item-box">
+                <div class="setting-row-inline">
+                    <span style="font-weight: 700; font-size: 13px;">فعال‌سازی پشتیبان‌گیری خودکار دوره‌ای:</span>
+                    <input type="checkbox" id="backupAutoEnabledInput" style="width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer;">
+                </div>
+                <div class="setting-row-inline" style="margin-top: 6px;">
+                    <span style="font-size: 12.5px; color: var(--text-muted);">دوره زمانی ذخیره خودکار:</span>
+                    <select id="backupIntervalInput" class="input-pill" style="min-width: 140px;">
+                        <option value="15">هر ۱۵ دقیقه</option>
+                        <option value="30">هر ۳۰ دقیقه</option>
+                        <option value="60">هر ۱ ساعت</option>
+                        <option value="120">هر ۲ ساعت</option>
+                        <option value="1440">هر ۲۴ ساعت (روزانه)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="setting-item-box">
+                <span style="font-weight: 700; font-size: 13px;">مسیر پوشه ذخیره‌سازی پشتیبان‌ها در ویندوز:</span>
+                <div id="backupFolderPathDisplay" class="folder-path-display">در حال بارگذاری...</div>
+                <div style="display: flex; gap: 8px; margin-top: 4px;">
+                    <button type="button" class="btn-add" style="font-size: 11.5px; padding: 6px 12px;" onclick="chooseBackupFolder()">تغییر پوشه...</button>
+                    <button type="button" class="btn-icon-text" style="font-size: 11.5px; padding: 6px 12px;" onclick="openBackupFolder()">نمایش در فایل اکسپلورر</button>
+                </div>
+            </div>
+
+            <div class="setting-item-box">
+                <div class="setting-row-inline">
+                    <span style="font-size: 12.5px; color: var(--text-muted);">آخرین وضعیت پشتیبان‌گیری:</span>
+                    <span id="lastBackupStatusText" style="font-size: 12px; font-weight: 700; color: var(--primary);">هنوز پشتیبان گرفته نشده</span>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button style="background: var(--primary); color: white;" onclick="saveBackupSettingsFromModal()">ذخیره تنظیمات</button>
+                <button style="background: #E2E8F0; color: var(--text-main);" onclick="triggerManualBackupNow()">پشتیبان‌گیری هم‌اکنون</button>
+                <button style="background: #F1F5F9; color: var(--text-muted);" onclick="closeBackupSettingsModal()">بستن</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div class="modal-overlay" id="shortcutsModal">
+        <div class="modal-card modal-card-lg">
+            <div class="modal-card-header">
+                <h3>
+                    <svg width="20" height="20" fill="none" stroke="var(--primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    کلیدهای میانبر تسک‌یار
+                </h3>
+                <button class="btn-icon-text" style="padding: 4px 8px;" onclick="closeShortcutsModal()">✕</button>
+            </div>
+
+            <div class="shortcuts-grid">
+                <div class="shortcut-row"><span>ثبت کار جدید</span><span class="kbd-badge">Ctrl + N</span></div>
+                <div class="shortcut-row"><span>جستجو در لیست کارها</span><span class="kbd-badge">Ctrl + F</span></div>
+                <div class="shortcut-row"><span>تنظیمات پشتیبان‌گیری خودکار</span><span class="kbd-badge">Ctrl + B</span></div>
+                <div class="shortcut-row"><span>پشتیبان‌گیری سریع هم‌اکنون</span><span class="kbd-badge">Ctrl + Shift + B</span></div>
+                <div class="shortcut-row"><span>ذخیره دستی فایل پشتیبان (JSON)</span><span class="kbd-badge">Ctrl + S</span></div>
+                <div class="shortcut-row"><span>بازیابی اطلاعات از فایل پشتیبان</span><span class="kbd-badge">Ctrl + O</span></div>
+                <div class="shortcut-row"><span>جابجایی به روز من</span><span class="kbd-badge">Alt + 1</span></div>
+                <div class="shortcut-row"><span>جابجایی به برد ۷ روز هفته</span><span class="kbd-badge">Alt + 2</span></div>
+                <div class="shortcut-row"><span>جابجایی به برد ۳۰ روزه ماه</span><span class="kbd-badge">Alt + 3</span></div>
+                <div class="shortcut-row"><span>جابجایی به کارهای مهم</span><span class="kbd-badge">Alt + 4</span></div>
+                <div class="shortcut-row"><span>جابجایی به برنامه‌های روزانه</span><span class="kbd-badge">Alt + 5</span></div>
+                <div class="shortcut-row"><span>جابجایی به برنامه‌های هفتگی</span><span class="kbd-badge">Alt + 6</span></div>
+                <div class="shortcut-row"><span>جابجایی به اهداف ماهیانه</span><span class="kbd-badge">Alt + 7</span></div>
+                <div class="shortcut-row"><span>نمایش همه وظایف</span><span class="kbd-badge">Alt + 8</span></div>
+                <div class="shortcut-row"><span>حذف کار انتخاب‌شده</span><span class="kbd-badge">Delete</span></div>
+                <div class="shortcut-row"><span>حالت تمام‌صفحه</span><span class="kbd-badge">F11</span></div>
+                <div class="shortcut-row"><span>راهنمای میانبرها</span><span class="kbd-badge">F1</span></div>
+                <div class="shortcut-row"><span>خروج از برنامه</span><span class="kbd-badge">Ctrl + Q</span></div>
+            </div>
+
+            <div class="modal-actions">
+                <button style="background: var(--primary); color: white;" onclick="closeShortcutsModal()">متوجه شدم</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal-overlay" id="aboutModal">
+        <div class="modal-card" style="text-align: center;">
+            <div class="about-logo-circle">ت</div>
+            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-main); margin: 0;">تسک‌یار ویندوز (TaskYar)</h3>
+            <p style="font-size: 13px; color: var(--primary); font-weight: 700; margin: 0;">نسخه ۱.۱.۰</p>
+            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.7; text-align: justify; margin: 0;">
+                نرم‌افزار مدیریت هوشمند کارهای روزانه، هفتگی و ماهیانه، با پشتیبانی کامل از تاریخ و تقویم شمسی، برد برنامه‌ریزی ۷ روزه و ۳۰ روزه، هشدار صوتی و زمان‌بندی زنگ، و سیستم خودکار پشتیبان‌گیری و بازیابی اطلاعات در ویندوز.
+            </p>
+            <div style="background: #F8FAFC; padding: 10px; border-radius: 10px; border: 1px solid var(--border); font-size: 12px; color: var(--text-muted);">
+                توسعه‌دهنده و کپی‌رایت: <span style="direction: ltr; display: inline-block; font-weight: 600;">mnabishahzamani@gmail.com</span><br>
+                منتشرشده تحت مجوز MIT © ۲۰۲۶
+            </div>
+            <div class="modal-actions">
+                <button style="background: var(--primary); color: white;" onclick="closeAboutModal()">بستن</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Application Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/datepicker.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

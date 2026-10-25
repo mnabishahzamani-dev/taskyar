@@ -1,0 +1,66 @@
+{
+  "name": "taskyar",
+  "productName": "TaskYar",
+  "version": "1.1.0",
+  "description": "TaskYar — a smart Persian task manager for Windows with full Jalali calendar support",
+  "main": "main/main.js",
+  "author": {
+    "name": "Mohammad Nabi Shahzamani",
+    "email": "mnabishahzamani@gmail.com",
+    "url": "https://github.com/mnabishahzamani"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/mnabishahzamani/taskyar#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnabishahzamani/taskyar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mnabishahzamani/taskyar/issues"
+  },
+  "keywords": [
+    "task-manager",
+    "todo",
+    "productivity",
+    "persian",
+    "farsi",
+    "jalali-calendar",
+    "persian-calendar",
+    "rtl",
+    "electron",
+    "windows",
+    "desktop-app"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "ir.mnabishahzamani.taskyar",
+    "productName": "TaskYar",
+    "artifactName": "TaskYar-Setup-${version}.${ext}",
+    "files": [
+      "main/**/*",
+      "preload/**/*",
+      "renderer/**/*",
+      "build/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "TaskYar"
+    }
+  }
+}
