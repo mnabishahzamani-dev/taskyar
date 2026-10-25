@@ -6,13 +6,13 @@
 
 **مدیریت هوشمند کارها و زمان برای ویندوز، با پشتیبانی کامل از تقویم شمسی**
 
-[![Version](https://img.shields.io/badge/version-1.1.0-6D28D9?style=flat-square)](https://github.com/mnabishahzamani/taskyar/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-6D28D9?style=flat-square)](https://github.com/mnabishahzamani-dev/taskyar/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows&logoColor=white)](#install)
 [![Electron](https://img.shields.io/badge/Electron-33-47848F?style=flat-square&logo=electron&logoColor=white)](https://www.electronjs.org)
 [![License](https://img.shields.io/badge/license-MIT-22C55E?style=flat-square)](LICENSE)
 [![UI](https://img.shields.io/badge/UI-Persian%20%2F%20RTL-F59E0B?style=flat-square)](#about)
 
-**[دانلود آخرین نسخه](https://github.com/mnabishahzamani/taskyar/releases/latest)** ·
+**[دانلود آخرین نسخه](https://github.com/mnabishahzamani-dev/taskyar/releases/latest)** ·
 [امکانات](#features) ·
 [تصاویر](#screenshots) ·
 [اجرا از سورس](#source) ·
@@ -104,7 +104,7 @@
 
 ### روش اول — فایل نصبی (پیشنهادی)
 
-1. از صفحه‌ی [Releases](https://github.com/mnabishahzamani/taskyar/releases/latest) فایل **TaskYar-Setup-1.1.0.exe** را دانلود کنید.
+1. از صفحه‌ی [Releases](https://github.com/mnabishahzamani-dev/taskyar/releases/latest) فایل **TaskYar-Setup-1.1.0.exe** را دانلود کنید.
 2. فایل را اجرا کنید و در صورت تمایل مسیر نصب را تغییر دهید.
 3. میانبر برنامه روی دسکتاپ و در منوی Start ساخته می‌شود.
 
@@ -117,7 +117,7 @@
 پیش‌نیاز: [Node.js LTS](https://nodejs.org) (نسخه ۱۸ یا بالاتر)
 
 ```bash
-git clone https://github.com/mnabishahzamani/taskyar.git
+git clone https://github.com/mnabishahzamani-dev/taskyar.git
 cd taskyar
 npm install
 npm start
@@ -207,7 +207,7 @@ taskyar/
 
 از گزارش باگ، پیشنهاد ویژگی و Pull Request استقبال می‌شود:
 
-1. برای تغییرات بزرگ، ابتدا یک [Issue](https://github.com/mnabishahzamani/taskyar/issues) باز کنید.
+1. برای تغییرات بزرگ، ابتدا یک [Issue](https://github.com/mnabishahzamani-dev/taskyar/issues) باز کنید.
 2. مخزن را Fork و یک شاخه‌ی جدید ایجاد کنید.
 3. تغییرات را با حفظ سبک فارسی و چیدمان RTL اعمال کنید.
 4. Pull Request را با توضیح واضح از تغییر و دلیل آن ارسال کنید.
@@ -240,14 +240,14 @@ taskyar/
 
 ### Download
 
-Get the latest Windows installer from the [Releases](https://github.com/mnabishahzamani/taskyar/releases/latest) page.
+Get the latest Windows installer from the [Releases](https://github.com/mnabishahzamani-dev/taskyar/releases/latest) page.
 
 ### Run from source
 
 Requires Node.js 18+.
 
 ```bash
-git clone https://github.com/mnabishahzamani/taskyar.git
+git clone https://github.com/mnabishahzamani-dev/taskyar.git
 cd taskyar
 npm install
 npm start

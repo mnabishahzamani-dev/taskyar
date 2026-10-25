@@ -7,16 +7,16 @@
   "author": {
     "name": "Mohammad Nabi Shahzamani",
     "email": "mnabishahzamani@gmail.com",
-    "url": "https://github.com/mnabishahzamani"
+    "url": "https://github.com/mnabishahzamani-dev"
   },
   "license": "MIT",
-  "homepage": "https://github.com/mnabishahzamani/taskyar#readme",
+  "homepage": "https://github.com/mnabishahzamani-dev/taskyar#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mnabishahzamani/taskyar.git"
+    "url": "git+https://github.com/mnabishahzamani-dev/taskyar.git"
   },
   "bugs": {
-    "url": "https://github.com/mnabishahzamani/taskyar/issues"
+    "url": "https://github.com/mnabishahzamani-dev/taskyar/issues"
   },
   "keywords": [
     "task-manager",
