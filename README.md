@@ -7,22 +7,24 @@
 **مدیریت هوشمند کارها و زمان برای ویندوز، با پشتیبانی کامل از تقویم شمسی**
 
 [![Version](https://img.shields.io/badge/version-1.1.0-6D28D9?style=flat-square)](https://github.com/mnabishahzamani/taskyar/releases)
-[![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows&logoColor=white)](#نصب-و-اجرا)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows&logoColor=white)](#install)
 [![Electron](https://img.shields.io/badge/Electron-33-47848F?style=flat-square&logo=electron&logoColor=white)](https://www.electronjs.org)
 [![License](https://img.shields.io/badge/license-MIT-22C55E?style=flat-square)](LICENSE)
-[![UI](https://img.shields.io/badge/UI-Persian%20%2F%20RTL-F59E0B?style=flat-square)](#تسکیار-چیست)
+[![UI](https://img.shields.io/badge/UI-Persian%20%2F%20RTL-F59E0B?style=flat-square)](#about)
 
 **[دانلود آخرین نسخه](https://github.com/mnabishahzamani/taskyar/releases/latest)** ·
-[امکانات](#امکانات) ·
-[تصاویر](#پیشنمایش) ·
-[اجرا از سورس](#اجرا-از-سورس) ·
-[میانبرها](#میانبرهای-صفحهکلید)
+[امکانات](#features) ·
+[تصاویر](#screenshots) ·
+[اجرا از سورس](#source) ·
+[میانبرها](#shortcuts)
 
 <img src="docs/screenshots/hero.png" alt="تسک‌یار — نگاهی به برنامه" width="100%" />
 
 </div>
 
 <div dir="rtl">
+
+<a id="about"></a>
 
 ## تسک‌یار چیست؟
 
@@ -31,6 +33,8 @@
 - **محلی و خصوصی:** بدون حساب کاربری، بدون تلمتری و بدون سرویس ابری. کارها روی همان سیستم شما می‌مانند.
 - **فارسی و راست‌به‌چپ:** رابط کاربری کامل فارسی با فونت [وزیرمتن](https://github.com/rastikerdar/vazirmatn) و تبدیل دقیق تاریخ با الگوریتم [jalaali](https://github.com/jalaali/jalaali-js).
 - **سبک و سریع:** Electron با جاوااسکریپت خالص؛ بدون فریم‌ورک سنگین و بدون وابستگی به سرور.
+
+<a id="features"></a>
 
 ## امکانات
 
@@ -68,6 +72,8 @@
 - خروجی و بازیابی دستی فایل **JSON**
 - آماده‌سازی پشتیبان برای ایمیل: ذخیره‌ی فایل، کپی خلاصه و داده‌ی کامل در کلیپ‌بورد و باز کردن پنجره‌ی ایمیل
 
+<a id="screenshots"></a>
+
 ## پیش‌نمایش
 
 <div align="center">
@@ -92,6 +98,8 @@
   <img src="docs/screenshots/ocean-theme.png" alt="تم اقیانوسی تسک‌یار" width="88%" />
 </p>
 
+<a id="install"></a>
+
 ## نصب و اجرا
 
 ### روش اول — فایل نصبی (پیشنهادی)
@@ -101,6 +109,8 @@
 3. میانبر برنامه روی دسکتاپ و در منوی Start ساخته می‌شود.
 
 > **نکته‌ی امنیتی:** این فایل با گواهی تجاری امضای دیجیتال نشده است؛ بنابراین Windows SmartScreen ممکن است هشدار نمایش دهد. کد منبع کامل در همین مخزن در دسترس است و می‌توانید نسخه‌ی خودتان را از سورس بسازید.
+
+<a id="source"></a>
 
 ### روش دوم — اجرا از سورس
 
@@ -123,6 +133,8 @@ npm run dist
 ```
 
 خروجی نصب‌کننده‌ی NSIS در پوشه‌ی `dist/` با نام `TaskYar-Setup-1.1.0.exe` ساخته می‌شود.
+
+<a id="shortcuts"></a>
 
 ## میانبرهای صفحه‌کلید
 
